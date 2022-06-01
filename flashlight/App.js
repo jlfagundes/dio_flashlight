@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {View, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import Torch from 'react-native-torch';
+import RNShake from 'react-native-shake';
 
 const App = () => {
   const [toggle, setToggle] = useState(false);
@@ -14,6 +15,15 @@ const App = () => {
     Torch.switchState(toggle);
     console.log('trocou o estado do flash do celular');
   }, [toggle]); // componente a ser observado
+
+  // ouvindo evento shake
+  useEffect(() => {
+    // adicionado uma inscrição do evento
+    const subscription = RNShake.addListener(() => {
+      // chamar a função quando desmontar o componente e autoremover para limpar estado
+      return () => subscription.remove();
+    });
+  }, []);
 
   return (
     <View style={toggle ? style.containerLight : style.container}>
