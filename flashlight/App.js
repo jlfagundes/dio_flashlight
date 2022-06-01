@@ -1,11 +1,17 @@
-import React, {useState} from 'react';
-import {View, Image, StyleSheet, TouchableOpacity} from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {View, Image, Alert, StyleSheet, TouchableOpacity} from 'react-native';
 
 const App = () => {
   const [toggle, setToggle] = useState(false);
 
   // boas práticas fazer uma função de callback
   const handleChangeToggle = () => setToggle(oldToggle => !oldToggle);
+
+  // observando um estado
+  useEffect(() => {
+    // ligar flash do celular
+    Alert.alert('Atualizou o componete: ' + toggle);
+  }, [toggle]); // componente a ser observado
 
   return (
     <View style={toggle ? style.containerLight : style.container}>
