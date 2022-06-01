@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
-import {View, Image, Alert, StyleSheet, TouchableOpacity} from 'react-native';
+import {View, Image, StyleSheet, TouchableOpacity} from 'react-native';
+import Torch from 'react-native-torch';
 
 const App = () => {
   const [toggle, setToggle] = useState(false);
@@ -10,7 +11,8 @@ const App = () => {
   // observando um estado
   useEffect(() => {
     // ligar flash do celular
-    Alert.alert('Atualizou o componete: ' + toggle);
+    Torch.switchState(toggle);
+    console.log('trocou o estado do flash do celular');
   }, [toggle]); // componente a ser observado
 
   return (
