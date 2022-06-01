@@ -1,27 +1,29 @@
 import React from 'react';
-import {View, Image, StyleSheet} from 'react-native';
+import {View, Image, StyleSheet, TouchableOpacity} from 'react-native';
 
 const App = () => {
   const toggle = false;
 
   return (
     <View style={toggle ? style.containerLight : style.container}>
-      <Image
-        style={toggle ? style.lightinigOn : style.lightinigOff}
-        source={
-          toggle
-            ? require('./assets/icons/eco-light.png')
-            : require('./assets/icons/eco-light-off.png')
-        }
-      />
-      <Image
-        style={style.dioLogo}
-        source={
-          toggle
-            ? require('./assets/icons/logo-dio.png')
-            : require('./assets/icons/logo-dio-white.png')
-        }
-      />
+      <TouchableOpacity onPress={() => {}}>
+        <Image
+          style={toggle ? style.lightinigOn : style.lightinigOff}
+          source={
+            toggle
+              ? require('./assets/icons/eco-light.png')
+              : require('./assets/icons/eco-light-off.png')
+          }
+        />
+        <Image
+          style={style.dioLogo}
+          source={
+            toggle
+              ? require('./assets/icons/logo-dio.png')
+              : require('./assets/icons/logo-dio-white.png')
+          }
+        />
+      </TouchableOpacity>
     </View>
   );
 };
