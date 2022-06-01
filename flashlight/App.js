@@ -4,14 +4,12 @@ import {View, Image, StyleSheet, TouchableOpacity} from 'react-native';
 const App = () => {
   const [toggle, setToggle] = useState(false);
 
+  // boas práticas fazer uma função de callback
+  const handleChangeToggle = () => setToggle(oldToggle => !oldToggle);
+
   return (
     <View style={toggle ? style.containerLight : style.container}>
-      <TouchableOpacity
-        onPress={() => {
-          setToggle(oldToggle => {
-            return !oldToggle;
-          });
-        }}>
+      <TouchableOpacity onPress={handleChangeToggle}>
         <Image
           style={toggle ? style.lightinigOn : style.lightinigOff}
           source={
